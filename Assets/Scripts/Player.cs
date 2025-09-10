@@ -9,10 +9,10 @@ public class Player : MonoBehaviour
     
     private void Update()
     {
-        var moveDirection = new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical")).normalized;
+        var moveDirection = new Vector3(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"), 0).normalized;
         transform.Translate(moveSpeed * Time.deltaTime * moveDirection, Space.World);
         
-        if(nearbyEntity != null && Input.GetKeyDown(KeyCode.E))
+        if(nearbyEntity != null)
         {
             entityBar.AddEntity(nearbyEntity);
             Destroy(nearbyEntity.gameObject);
